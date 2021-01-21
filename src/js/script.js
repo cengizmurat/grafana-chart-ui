@@ -1,5 +1,5 @@
 let defaultItems;
-const times = [
+const periods = [
   'w', // week
   'm', // month
   'q', // quarter
@@ -7,18 +7,40 @@ const times = [
   'y10', // decade
 ];
 
-function run() {
+async function run() {
   const kind = document.currentScript.getAttribute('data-kind');
   if (!kind) return;
 
   const divs = document.querySelectorAll('div.graph')
   updateDivs(divs, 'data-kind', kind);
   const query = new URLSearchParams(window.location.search);
-  if (query.get('dataName')) updateDivs(divs, 'data-name', query.get('dataName'));
+  const dataName = query.get('dataName');
+  if (dataName) {
+    updateDivs(divs, 'data-name', dataName)
+    const title = document.getElementById('itemName')
+    if (kind === 'companies') {
+      const company = (await loadCompanies()).filter(name => name === dataName)[0]
+      if (company) {
+        title.innerHTML = company;
+      }
+    } else if (kind === 'stacks') {
+      const stack = await loadStack(dataName)
+      if (stack) {
+        title.innerHTML = stack.name
+      }
+    } else if (kind === 'components') {
+      const component = (await loadComponents()).filter(component => component.short === dataName)[0]
+      if (component) {
+        title.innerHTML = component.name
+        title.parentElement.innerHTML += component.svg
+        document.getElementById('itemLink').href = component.href
+      }
+    }
+  }
   if (query.get('components')) updateDivs(divs, 'data-components', query.get('components'));
   if (query.get('companies')) updateDivs(divs, 'data-companies', query.get('companies'));
   if (query.get('stack')) updateDivs(divs, 'data-stack', query.get('stack'));
-  updateDivs(divs, 'data-periods', times.join(','));
+  updateDivs(divs, 'data-periods', periods.join(','));
 
   createMultipleSelectionList(kind).then(function (dropdown) {
     // Set selected companies by default
@@ -92,21 +114,21 @@ async function createMultipleSelectionList(kind) {
 }
 
 async function loadComponents() {
-  const components = await callApi('GET', `https://grafana-chart.apps.c1.ocp.dev.sgcip.com/components`)
+  const components = await callApi('GET', `https://grafana-chart-dev.apps.c1.ocp.dev.sgcip.com/components`)
   components.sort(sortByName) // Sort alphabetically
 
   return components
 }
 
 async function loadCompanies() {
-  const companies = await callApi('GET', `https://grafana-chart.apps.c1.ocp.dev.sgcip.com/companies`)
+  const companies = await callApi('GET', `https://grafana-chart-dev.apps.c1.ocp.dev.sgcip.com/companies`)
   companies.sort(sortByName) // Sort alphabetically
 
   return companies
 }
 
 async function loadStack(name) {
-  return await callApi('GET', `https://grafana-chart.apps.c1.ocp.dev.sgcip.com/stacks/${name}/details`)
+  return await callApi('GET', `https://grafana-chart-dev.apps.c1.ocp.dev.sgcip.com/stacks/${name}/details`)
 }
 
 async function componentsCallback() {
