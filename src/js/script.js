@@ -12,6 +12,7 @@ async function run() {
   if (!kind) return;
 
   const divs = document.querySelectorAll('div.graph')
+  updateDivs(divs, 'data-kind', kind, kind)
   const query = new URLSearchParams(window.location.search);
   const dataName = query.get('dataName');
   if (dataName) {
@@ -45,7 +46,8 @@ async function run() {
     dropdown.setValue(defaultItems)
 
     const selectedItems = Array.from(dropdown.listElements).filter(element => element.className.indexOf('active') !== -1).map(element => element.getAttribute('data-value'))
-    if (selectedItems.length > 0) updateGraphs(selectedItems)
+    updateDivs(divs, kind === 'companies' ? 'data-components' : 'data-companies', selectedItems.join(','), kind)
+    if (selectedItems.length > 0) updateGraphs()
   })
 }
 
@@ -103,9 +105,8 @@ async function createMultipleSelectionList(kind) {
     const query = new URLSearchParams(window.location.search);
     query.set(kind === 'companies' ? 'components' : 'companies', selectedItems.join(','));
     window.history.pushState({}, '', window.location.href.split('?')[0] + '?' + query);
-    if (selectedItems.length > 0) {
-      updateGraphs(selectedItems)
-    }
+    updateDivs(document.querySelectorAll('div.graph'), kind === 'companies' ? 'data-components' : 'data-companies', selectedItems.join(','), kind);
+    if (selectedItems.length > 0) updateGraphs();
   }
 
   return multipleSelection
