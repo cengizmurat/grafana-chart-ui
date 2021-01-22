@@ -52,10 +52,7 @@ async function run() {
 
 function updateDivs(divs, attribute, value) {
   for (const div of divs) {
-    const data = div.getAttribute(attribute)
-    if (!data) {
-      div.setAttribute(attribute, value)
-    }
+    div.setAttribute(attribute, value)
   }
 }
 
