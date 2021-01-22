@@ -14,6 +14,6 @@ Statistics used in this report are dynamically collected from [CNCF's devstats s
 
 Contributions
 
-<div class="graph" data-metric="hcomcontributions" data-components="argo,fluentd" data-periods="w,m,q,y,y10"></div>
+<div class="graph" data-kind="companies" data-metric="hcomcontributions" data-periods="w,m,y,y10"></div>
 
 <script src="js/script.js" data-kind="companies"></script>
