@@ -52,7 +52,7 @@ async function run() {
 function updateDivs(divs, attribute, value, kind) {
   for (const div of divs) {
     const dataKind = div.getAttribute('data-kind')
-    if (!kind || dataKind === kind) {
+    if (!kind || !dataKind || dataKind === kind) {
       div.setAttribute(attribute, value)
     }
   }
