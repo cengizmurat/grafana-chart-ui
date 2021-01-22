@@ -1,6 +1,5 @@
 ---
-layout: default
-title: Hello 
+title: Company Analysis
 ---
 
 # Analysis of contributions of 

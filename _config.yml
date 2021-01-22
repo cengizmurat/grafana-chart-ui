@@ -3,3 +3,10 @@ markdown: kramdown
 
 kramdown:
   auto_ids: false
+
+# Default YAML values (more information on Jekyll's site)
+defaults:
+  - scope:
+      path: "" # any file that's not a post will be a "default" layout by default
+    values:
+      layout: "default"
