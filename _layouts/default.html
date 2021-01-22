@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% if page.title %}
+            <title>{{ page.title }}</title>
+        {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/page.css">
+        <link rel="stylesheet" href="css/vanillaSelectBox.css">
+        <link rel="stylesheet" href="https://grafana-chart-dev.apps.c1.ocp.dev.sgcip.com/graph/styles.css">
+
+        <script src="js/vanillaSelectBox.js"></script>
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+        <script src="https://grafana-chart-dev.apps.c1.ocp.dev.sgcip.com/graph/script.js"></script>
+    </head>
+    <body>{{ content }}</body>
+</html>
