@@ -17,22 +17,21 @@ async function run() {
   const dataName = query.get('dataName');
   if (dataName) {
     updateDivs(divs, 'data-name', dataName)
-    const title = document.getElementById('itemName')
+    const title = document.querySelectorAll('h1')[0]
     if (kind === 'companies') {
       const company = (await loadCompanies()).filter(name => name === dataName)[0]
       if (company) {
-        title.innerHTML = company;
+        title.innerHTML = `${title.innerHTML} ${company}`;
       }
     } else if (kind === 'stacks') {
       const stack = await loadStack(dataName)
       if (stack) {
-        title.innerHTML = stack.name
+        title.innerHTML = `${title.innerHTML} ${stack.name}`
       }
     } else if (kind === 'components') {
       const component = (await loadComponents()).filter(component => component.short === dataName)[0]
       if (component) {
-        title.innerHTML = component.name
-        title.parentElement.innerHTML += component.svg
+        title.innerHTML = `${title.innerHTML} ${component.name} ${component.svg}`
         document.getElementById('itemLink').href = component.href
       }
     }
