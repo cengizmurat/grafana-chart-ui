@@ -12,11 +12,10 @@ async function run() {
   if (!kind) return;
 
   const divs = document.querySelectorAll('div.graph')
-  updateDivs(divs, 'data-kind', kind);
   const query = new URLSearchParams(window.location.search);
   const dataName = query.get('dataName');
   if (dataName) {
-    updateDivs(divs, 'data-name', dataName)
+    updateDivs(divs, 'data-name', dataName, kind)
     const title = document.querySelectorAll('h1')[0]
     if (kind === 'companies') {
       const company = (await loadCompanies()).filter(name => name === dataName)[0]
@@ -36,10 +35,10 @@ async function run() {
       }
     }
   }
-  if (query.get('components')) updateDivs(divs, 'data-components', query.get('components'));
-  if (query.get('companies')) updateDivs(divs, 'data-companies', query.get('companies'));
-  if (query.get('stack')) updateDivs(divs, 'data-stack', query.get('stack'));
-  updateDivs(divs, 'data-periods', periods.join(','));
+  if (query.get('components')) updateDivs(divs, 'data-components', query.get('components'), kind);
+  if (query.get('companies')) updateDivs(divs, 'data-companies', query.get('companies'), kind);
+  if (query.get('stack')) updateDivs(divs, 'data-stack', query.get('stack'), kind);
+  if (!query.get('data-periods')) updateDivs(divs, 'data-periods', periods.join(','), kind);
 
   createMultipleSelectionList(kind).then(function (dropdown) {
     // Set selected companies by default
@@ -50,9 +49,12 @@ async function run() {
   })
 }
 
-function updateDivs(divs, attribute, value) {
+function updateDivs(divs, attribute, value, kind) {
   for (const div of divs) {
-    div.setAttribute(attribute, value)
+    const dataKind = div.getAttribute('data-kind')
+    if (!kind || dataKind === kind) {
+      div.setAttribute(attribute, value)
+    }
   }
 }
 
