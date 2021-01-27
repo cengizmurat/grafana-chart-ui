@@ -13,6 +13,6 @@ Statistics used in this report are dynamically collected from [CNCF's devstats s
 
 Contributions
 
-<div class="graph" data-kind="stacks" data-metric="hcomcontributions" data-periods="w,m,y,y10"></div>
+<div class="graph" data-kind="stack" data-metric="hcomcontributions" data-periods="w,m,y,y10"></div>
 
-<script src="js/script.js" data-kind="stacks"></script>
+<script src="js/script.js" data-kind="stack"></script>
