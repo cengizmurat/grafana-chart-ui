@@ -127,7 +127,7 @@ async function loadCompanies() {
 }
 
 async function loadStack(name) {
-  return await callApi('GET', `https://grafana-chart-dev.apps.c1.ocp.dev.sgcip.com/stack/${name}/details`)
+  return await callApi('GET', `https://grafana-chart-dev.apps.c1.ocp.dev.sgcip.com/stacks/${name}/details`)
 }
 
 async function componentsCallback() {
