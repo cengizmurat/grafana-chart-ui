@@ -23,7 +23,7 @@ async function run() {
       if (company) {
         title.innerHTML = `${title.innerHTML} ${company}`;
       }
-    } else if (kind === 'stacks') {
+    } else if (kind === 'stack') {
       const stack = await loadStack(dataName)
       if (stack) {
         title.innerHTML = `${title.innerHTML} ${stack.name}`
