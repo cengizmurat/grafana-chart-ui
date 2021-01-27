@@ -1,3 +1,8 @@
+if (typeof apiBaseUrl === 'undefined') {
+  // Default API Base URL if not defined
+  apiBaseUrl = 'https://grafana-chart-dev.apps.c1.ocp.dev.sgcip.com';
+}
+
 let defaultItems;
 const periods = [
   'w', // week
@@ -113,21 +118,21 @@ async function createMultipleSelectionList(kind) {
 }
 
 async function loadComponents() {
-  const components = await callApi('GET', `https://grafana-chart-dev.apps.c1.ocp.dev.sgcip.com/components`)
+  const components = await callApi('GET', `${apiBaseUrl}/components`)
   components.sort(sortByName) // Sort alphabetically
 
   return components
 }
 
 async function loadCompanies() {
-  const companies = await callApi('GET', `https://grafana-chart-dev.apps.c1.ocp.dev.sgcip.com/companies`)
+  const companies = await callApi('GET', `${apiBaseUrl}/companies`)
   companies.sort(sortByName) // Sort alphabetically
 
   return companies
 }
 
 async function loadStack(name) {
-  return await callApi('GET', `https://grafana-chart-dev.apps.c1.ocp.dev.sgcip.com/stacks/${name}/details`)
+  return await callApi('GET', `${apiBaseUrl}/stacks/${name}/details`)
 }
 
 async function componentsCallback() {
