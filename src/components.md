@@ -13,10 +13,10 @@ Statistics used in this report are dynamically collected from [CNCF's devstats s
 
 ### Contributions
 
+<div markdown="1" class="graph" data-kind="components" data-name="k8s" data-metric="hcomcontributions" data-companies="Docker Inc.,Google,IBM,Independent,Microsoft Corporation,Pivotal,Red Hat" data-periods="w,m,y,y10">
 Google is the most important contributor to Kubernetes.
 {: .graphComment }
-
-<div class="graph" data-kind="components" data-name="k8s" data-metric="hcomcontributions" data-companies="Docker Inc.,Google,IBM,Independent,Microsoft Corporation,Pivotal,Red Hat" data-periods="w,m,y,y10"></div>
+</div>
 
 ### Contributors
 
