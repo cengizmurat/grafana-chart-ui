@@ -15,4 +15,4 @@ Contributions
 
 <div class="graph" data-kind="companies" data-metric="hcomcontributions" data-periods="w,m,y,y10"></div>
 
-<script src="js/script.js" data-kind="companies"></script>
+<script src="js/script.js" data-kind="companies" data-read-query="true"></script>

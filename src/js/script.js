@@ -13,12 +13,14 @@ const periods = [
 ];
 
 async function run() {
-  const kind = document.currentScript.getAttribute('data-kind');
+  const currentScript = document.currentScript
+  const kind = currentScript.getAttribute('data-kind');
+  const readQuery = currentScript.getAttribute('data-read-query') === 'true';
   if (!kind) return;
 
   const divs = document.querySelectorAll('div.graph')
   updateDivs(divs, 'data-kind', kind, kind)
-  const query = new URLSearchParams(window.location.search);
+  const query = new URLSearchParams(readQuery ? window.location.search : '');
   const dataName = query.get('dataName');
   if (dataName) {
     updateDivs(divs, 'data-name', dataName, kind)

@@ -15,4 +15,4 @@ Contributions
 
 <div class="graph" data-kind="stack" data-metric="hcomcontributions" data-periods="w,m,y,y10"></div>
 
-<script src="js/script.js" data-kind="stack"></script>
+<script src="js/script.js" data-kind="stack" data-read-query="true"></script>
