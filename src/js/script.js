@@ -52,7 +52,7 @@ async function run() {
 
     const selectedItems = Array.from(dropdown.listElements).filter(element => element.className.indexOf('active') !== -1).map(element => element.getAttribute('data-value'))
     updateDivs(divs, kind === 'companies' ? 'data-components' : 'data-companies', selectedItems.join(','), kind)
-    if (selectedItems.length > 0) updateGraphs()
+    if (selectedItems.length > 0) updateGraphs(true) // keep comments for first graphs loading
   })
 }
 
