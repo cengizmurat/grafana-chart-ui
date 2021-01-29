@@ -20,7 +20,7 @@ async function run() {
 
   const divs = document.querySelectorAll('div.graph')
   updateDivs(divs, 'data-kind', kind, kind)
-  const query = new URLSearchParams(readQuery ? window.location.search : '');
+  const query = new URLSearchParams(window.location.search);
   const dataName = query.get('dataName');
   if (dataName) {
     updateDivs(divs, 'data-name', dataName, kind)
@@ -43,10 +43,12 @@ async function run() {
       }
     }
   }
-  if (query.get('components')) updateDivs(divs, 'data-components', query.get('components'), kind);
-  if (query.get('companies')) updateDivs(divs, 'data-companies', query.get('companies'), kind);
-  if (query.get('stack')) updateDivs(divs, 'data-stack', query.get('stack'), kind);
-  if (!query.get('data-periods')) updateDivs(divs, 'data-periods', periods.join(','), kind);
+  if (readQuery) {
+    if (query.get('components')) updateDivs(divs, 'data-components', query.get('components'), kind);
+    if (query.get('companies')) updateDivs(divs, 'data-companies', query.get('companies'), kind);
+    if (query.get('stack')) updateDivs(divs, 'data-stack', query.get('stack'), kind);
+    if (!query.get('data-periods')) updateDivs(divs, 'data-periods', periods.join(','), kind);
+  }
 
   createMultipleSelectionList(kind).then(function (dropdown) {
     // Set selected companies by default
