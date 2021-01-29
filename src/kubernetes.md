@@ -25,4 +25,4 @@ Google is the company with the most contributors to Kubernetes.
 {: .graphComment }
 </div>
 
-<script src="js/script.js" data-kind="components" data-read-query="false"></script>
+<script src="js/script.js" data-kind="components" data-name="k8s" data-read-query="false"></script>

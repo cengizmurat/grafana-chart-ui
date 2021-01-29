@@ -21,7 +21,7 @@ async function run() {
   const divs = document.querySelectorAll('div.graph')
   updateDivs(divs, 'data-kind', kind, kind)
   const query = new URLSearchParams(window.location.search);
-  const dataName = query.get('dataName');
+  const dataName = query.get('dataName') || currentScript.getAttribute('data-name');
   if (dataName) {
     updateDivs(divs, 'data-name', dataName, kind)
     const title = document.querySelectorAll('h1')[0]
