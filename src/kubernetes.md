@@ -20,8 +20,8 @@ Google has more contributed to Kubernetes than any other big tech company.
 
 ### Contributors
 
-<div markdown="1" class="graph" data-kind="components" data-name="k8s" data-metric="hcomcontributors" data-companies="Docker Inc.,Google,IBM,Independent,Microsoft Corporation,Pivotal,Red Hat" data-periods="w,m,y,y10">
-Google is the company with the most contributors to Kubernetes.
+<div markdown="1" class="graph" data-kind="components" data-name="k8s" data-metric="hcomcontributors" data-companies="Docker Inc.,IBM,Microsoft Corporation,Pivotal,Red Hat" data-periods="y,y10">
+Long term contributors to Kubernetes (except Google and independents).
 {: .graphComment }
 </div>
 
