@@ -52,9 +52,11 @@ async function run() {
     // Set selected companies by default
     dropdown.setValue(defaultItems)
 
-    const selectedItems = Array.from(dropdown.listElements).filter(element => element.className.indexOf('active') !== -1).map(element => element.getAttribute('data-value'))
-    updateDivs(divs, kind === 'companies' ? 'data-components' : 'data-companies', selectedItems.join(','), kind)
-    if (selectedItems.length > 0) updateGraphs(true) // keep comments for first graphs loading
+    if (readQuery) {
+      const selectedItems = Array.from(dropdown.listElements).filter(element => element.className.indexOf('active') !== -1).map(element => element.getAttribute('data-value'))
+      updateDivs(divs, kind === 'companies' ? 'data-components' : 'data-companies', selectedItems.join(','), kind)
+    }
+    updateGraphs(true) // keep comments for first graphs loading
   })
 }
 
