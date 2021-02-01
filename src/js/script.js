@@ -56,8 +56,12 @@ async function run() {
 
     if (readQuery) {
       const selectedItems = Array.from(dropdown.listElements).filter(element => element.className.indexOf('active') !== -1).map(element => element.getAttribute('data-value'))
-      if (kind === 'companies' && query.get('components') && query.get('components').split(',').indexOf('all') === 0) selectedItems.unshift('all')
-      else if (kind === 'components' && query.get('companies') && query.get('companies').split(',').indexOf('all') === 0) selectedItems.unshift('all')
+      if ((kind === 'companies' && query.get('components') && query.get('components').split(',').indexOf('all') === 0)
+        || (kind === 'components' && query.get('companies') && query.get('companies').split(',').indexOf('all') === 0)) {
+        selectedItems.splice(0, selectedItems.length)
+        selectedItems.push('all')
+        dropdown.empty()
+      }
       updateDivs(divs, kind === 'companies' ? 'data-components' : 'data-companies', selectedItems.join(','), kind)
     }
     updateGraphs(true) // keep comments for first graphs loading
