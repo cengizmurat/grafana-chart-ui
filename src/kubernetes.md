@@ -13,14 +13,14 @@ Statistics used in this report are dynamically collected from [CNCF's devstats s
 
 ### Contributions
 
-<div markdown="1" class="graph" data-kind="components" data-name="k8s" data-metric="hcomcontributions" data-companies="Docker Inc.,Google,IBM,Independent,Microsoft Corporation,Pivotal,Red Hat" data-periods="w,m,y,y10">
+<div markdown="1" class="graph" data-clickable data-kind="components" data-name="k8s" data-metric="hcomcontributions" data-companies="Docker Inc.,Google,IBM,Independent,Microsoft Corporation,Pivotal,Red Hat" data-periods="w,m,y,y10">
 Google has more contributed to Kubernetes than any other big tech company.
 {: .graphComment }
 </div>
 
 ### Contributors
 
-<div markdown="1" class="graph" data-kind="components" data-name="k8s" data-metric="hcomcontributors" data-companies="Docker Inc.,IBM,Microsoft Corporation,Pivotal,Red Hat" data-periods="y,y10">
+<div markdown="1" class="graph" data-clickable data-kind="components" data-name="k8s" data-metric="hcomcontributors" data-companies="Docker Inc.,IBM,Microsoft Corporation,Pivotal,Red Hat" data-periods="y,y10">
 Long term contributors to Kubernetes (except Google and independents).
 {: .graphComment }
 </div>
