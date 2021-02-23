@@ -1,4 +1,5 @@
 ---
+layout: dev
 title: Kubernetes Analysis
 ---
 
