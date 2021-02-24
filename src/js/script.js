@@ -62,7 +62,7 @@ async function run() {
         selectedItems.push('all')
         dropdown.empty()
       }
-      updateDivs(divs, kind === 'companies' ? 'data-components' : 'data-companies', selectedItems.join(','), kind)
+      if (selectedItems.length > 0) updateDivs(divs, kind === 'companies' ? 'data-components' : 'data-companies', selectedItems.join(','), kind)
     }
     updateGraphs(true) // keep comments for first graphs loading
   })
