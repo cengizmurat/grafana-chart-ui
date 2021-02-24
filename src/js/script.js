@@ -119,11 +119,13 @@ async function createMultipleSelectionList(kind) {
 
   button.onclick = function (event) {
     const selectedItems = Array.from(multipleSelection.listElements).filter(element => element.className.indexOf('active') !== -1).map(element => element.getAttribute('data-value'));
-    const query = new URLSearchParams(window.location.search);
-    query.set(kind === 'companies' ? 'components' : 'companies', selectedItems.join(','));
-    window.history.pushState({}, '', window.location.href.split('?')[0] + '?' + query);
-    updateDivs(document.querySelectorAll('div.graph'), kind === 'companies' ? 'data-components' : 'data-companies', selectedItems.join(','), kind);
-    if (selectedItems.length > 0) updateGraphs();
+    if (selectedItems.length > 0) {
+      const query = new URLSearchParams(window.location.search);
+      query.set(kind === 'companies' ? 'components' : 'companies', selectedItems.join(','));
+      window.history.pushState({}, '', window.location.href.split('?')[0] + '?' + query);
+      updateDivs(document.querySelectorAll('div.graph'), kind === 'companies' ? 'data-components' : 'data-companies', selectedItems.join(','), kind);
+      updateGraphs();
+    }
   }
 
   return multipleSelection
