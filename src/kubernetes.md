@@ -12,6 +12,10 @@ Statistics used in this report are dynamically collected from [CNCF's devstats s
 
 <div id="selection"></div>
 
+### Stack
+
+<div markdown="1" class="graph" data-clickable data-kind="stack" data-name="cip" data-metric="hcomcontributions" data-companies="all" data-periods="w,m,y,y10"></div>
+
 ### Contributions
 
 <div markdown="1" class="graph" data-clickable data-kind="components" data-name="k8s" data-metric="hcomcontributions" data-companies="all" data-periods="w,m,y,y10" data-limit="6">
@@ -26,4 +30,6 @@ Long term contributors to Kubernetes (except Google and independents).
 {: .graphComment }
 </div>
 
-<script src="js/script.js" data-kind="components" data-name="k8s" data-read-query="false"></script>
+<script data-kind="components" data-read-query="false">
+  updateGraphs(true)
+</script>
